@@ -48,6 +48,9 @@ Thumbs.db
 tmp/
 temp/
 
+# Local helper scripts
+scripts/run-github-mcp.ps1
+
 # Optional npm cache directory
 .npm
 
