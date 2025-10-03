@@ -36,6 +36,7 @@ logs
 
 # IDE
 .vscode/
+.vscode-test/
 .idea/
 *.swp
 *.swo
