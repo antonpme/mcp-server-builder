@@ -51,6 +51,7 @@ temp/
 
 # Local helper scripts
 scripts/run-github-mcp.ps1
+scripts/analyze-commits.mjs
 
 # Optional npm cache directory
 .npm
