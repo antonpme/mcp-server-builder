@@ -33,7 +33,7 @@ try {
     serverName: 'test-server'
   };
 
-  const structure = generator.generateProjectStructure(options, parsed);
+  const structure = generator.generateProjectStructure(options, ResponseParserFactory.parse(jsonResponse));
   console.log('✓ CodeGenerator works:', structure.files['server.ts'] !== undefined);
 } catch (error) {
   console.log('✗ CodeGenerator failed:', error.message);

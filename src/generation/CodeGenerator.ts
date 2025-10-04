@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { GeneratedCode } from '../services/OpenAIService';
 import { ResponseParserFactory } from './ResponseParser';
 import { TemplateRegistry, TemplateVariables } from './Templates';
 
