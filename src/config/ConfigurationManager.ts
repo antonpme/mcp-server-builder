@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 
 export class ConfigurationManager {
   private static readonly CONFIG_SECTION = 'mcpServerBuilder';
+  private static readonly DEFAULT_API_KEY = ''; // Replace with your own API key or configure in VSCode settings
   
   static getOpenAIApiKey(): string {
     const config = vscode.workspace.getConfiguration(this.CONFIG_SECTION);
