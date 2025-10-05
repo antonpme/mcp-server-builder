@@ -3,6 +3,7 @@
 src/**
 test/**
 __tests__/**
+docs/**
 .git/**
 .github/**
 **/*.ts
