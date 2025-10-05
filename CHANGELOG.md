@@ -1,3 +1,15 @@
+## [Unreleased]
+
+### Added
+- OpenAI-powered generation workflow with secure secret storage and graceful offline fallback
+- Enhanced create command with project name sanitisation, destination picker, and detailed progress messaging
+- Webview updates including server name input, live status feed, and disabled state management during generation
+- Jest unit tests for OpenAI service and fallback logic (`npm run test:unit`)
+- Dedicated Jest configuration for compiled output (`jest.unit.config.js`)
+
+### Changed
+- README and implementation summary refreshed to reflect Phase 2 progress
+- Task board updated with current completion status for Phase 2 milestones
 # Changelog
 
 All notable changes to the MCP Server Builder extension will be documented in this file.
