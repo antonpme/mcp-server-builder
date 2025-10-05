@@ -1,65 +1,39 @@
-# MCP Server Builder – Implementation Summary
+﻿# MCP Server Builder — Implementation Summary
 
-## Status Overview
-- ✅ Phase 1 foundation complete
-- ✅ Phase 2 core capabilities delivered (AI-assisted generation, offline fallback, secure configuration, unit tests)
-- 🚧 Phase 2 polish and advanced UI still in progress
+## Status
+- Phase 1 complete (scaffolding, config, commands, basic UI, CI).
+- Phase 2 foundations in place (OpenAI path + offline fallback, tests, packaging).  
+  Remaining: MCP SDK wiring, preview wizard, robust error handling.
 
-## Phase 1 Deliverables
-- Project bootstrapping (TypeScript, ESLint/Prettier, VSCE packaging)
-- Command registration and lifecycle management
-- Configuration manager with VS Code settings integration
-- Initial webview with theming-aware layout
-- CI pipeline using GitHub Actions
+## What Exists Today
+- Extension lifecycle, command registration, and SecretStorage for API keys.
+- OpenAIService for generation requests; fallback generator if API key missing or request fails.
+- Generation pipeline that parses JSON-in-markdown responses and writes files.
+- Unit tests (OpenAI service + fallback), CI that tests on Node 16/18 and packages on Node 20.
+- `.vscodeignore` tuned so VSIX contains compiled `out/**` only.
 
-## Phase 2 Highlights
-- **OpenAI service**: prompt orchestration, error handling, and model abstraction
-- **Secure key storage**: migration to VS Code secret storage with legacy cleanup
-- **Create workflow**: auto-sanitised project names, destination picker, progress reporting
-- **Fallback generator**: language-aware templates when OpenAI is unavailable
-- **Webview UX**: server name input, status messaging, disabled state management
-- **Unit tests**: Jest coverage for OpenAI flows and fallback logic (`npm run test:unit`)
+## What We Are Building Next
+- MCP SDK integration (stdio/SSE) and richer templates (basic/tools/resources/prompts/advanced).
+- Wizard with file‑tree preview and validation before writing.
+- Retries/timeouts/rate limiting in OpenAIService; clearer errors.
+- Integration tests that compile and smoke‑run a generated TS server; minimal UI smoke tests.
+- Public README with screenshots and troubleshooting; internal docs moved to a private repo and synced when authorized.
 
-## Project Structure
+## Acceptance Criteria (Release)
+- “Describe → Options → Preview → Generate” flow produces a runnable server with one real tool.
+- Offline mode generates a useful scaffold with next‑steps.
+- Tests and coverage gate pass in CI; VSIX packages cleanly.
+- Docs are complete for end users; internal docs remain private and synced.
+
+## Project Layout (high level)
 ```
-mcp-server-builder/
-├── .github/workflows/ci.yml
-├── src/
-│   ├── commands/
-│   │   ├── CreateServerCommand.ts
-│   │   └── OpenWebviewCommand.ts
-│   ├── config/ConfigurationManager.ts
-│   ├── services/OpenAIService.ts
-│   ├── generation/
-│   │   ├── CodeGenerator.ts
-│   │   ├── ResponseParser.ts
-│   │   └── Templates.ts
-│   ├── ui/WebviewPanel.ts
-│   ├── extension.ts
-│   └── types.ts
-├── src/__tests__/
-│   ├── CreateServerCommand.test.ts
-│   └── OpenAIService.test.ts
-├── out/… (compiled output)
-├── jest.unit.config.js
-├── jest.config.js (re-exports unit config)
-├── package.json
-├── tsconfig.json
-└── …
+.github/workflows/ci.yml
+src/
+  commands/ (CreateServerCommand, OpenWebviewCommand, …)
+  config/ConfigurationManager.ts
+  services/OpenAIService.ts
+  generation/ (CodeGenerator, ResponseParser, Templates)
+  ui/WebviewPanel.ts
+  extension.ts
+out/ (compiled)
 ```
-
-## Tooling & Scripts
-- `npm run compile` – TypeScript build
-- `npm run test:unit` – Compile + Jest unit suites (uses compiled JS)
-- `npm run package` – VSIX packaging
-
-## Next Steps
-- Inline code preview of generated artifacts
-- Template catalogue expansion (tools/resources/prompts variants)
-- Richer failure diagnostics and log surfaces in the UI
-- Deployment helpers and MCP transport selection polish
-
-## Documentation
-- README refreshed with new workflow and testing guidance
-- Task tracker updated to reflect new Phase 2 progress
-- Stack and design docs scheduled for refresh alongside upcoming UI polish
