@@ -1,7 +1,7 @@
 ﻿# MCP Server Builder — Product Requirements (MVP)
 
 ## 1. Purpose
-Help developers create runnable MCP servers from natural‑language descriptions directly inside VS Code.
+Help developers create runnable MCP servers from natural-language descriptions directly inside VS Code.
 
 ## 2. Minimum Viable Product
 - Generate a runnable server (TypeScript/JavaScript) with:
@@ -11,22 +11,21 @@ Help developers create runnable MCP servers from natural‑language descriptions
 - Wizard UX with preview:
   - Steps: Describe → Options → Preview → Generate
   - File tree + content preview; prevent generation if validation fails
-- OpenAI integration with robust behavior:
-  - Clear error messages (auth/quota/network/content)
-  - Retries with backoff; timeouts
-  - Guaranteed offline fallback producing a useful scaffold
+- AI provider layer with robust behavior:
+  - Support OpenAI, Google Gemini, Claude, and OpenRouter behind a common adapter
+  - Clear error messages (auth/quota/network/content) with retries, backoff, and timeouts
+  - Guaranteed offline fallback producing a useful scaffold when providers fail
 - Validation of generated output:
   - Format + lint; compile check for TS template
 - Documentation (public):
   - Quick start, screenshots/GIFs, troubleshooting, FAQ
 
-## 3. Non‑Goals (for MVP)
+## 3. Non-Goals (for MVP)
 - Python generation
-- Multiple providers beyond OpenAI
 - Advanced collaboration/analytics features
 
 ## 4. UX Notes
-- First‑run onboarding and an “Example” description
+- First-run onboarding and an "Example" description
 - Status updates during generation and retry path on failures
 - Success page links to open the generated folder and readme
 
@@ -40,5 +39,5 @@ Help developers create runnable MCP servers from natural‑language descriptions
 
 ## 7. Success Metrics
 - Successful generation rate
-- Fallback usage rate (indicator of model or quota issues)
+- Fallback usage rate (indicator of provider quota/issues)
 - User reported satisfaction and reduced setup time

@@ -25,10 +25,11 @@ This plan is written for a solo, non‑coder sponsor. It lists what will be deli
 - Expand templates (basic/tools/resources/prompts/advanced) for TS/JS.
 - Normalize paths, generate `package.json` scripts, and README snippet for the generated project.
 
-2) OpenAI Service (robust)
-- Retries with exponential backoff, timeouts, and rate limiting.
-- Clear error categories (auth/quota/network/content). Model settings in UI.
-- Always‑useful offline scaffold + “what’s missing” checklist.
+2) AI Provider Layer (robust & flexible)
+- Abstraction that supports OpenAI plus additional providers (Google Gemini, Claude, OpenRouter).
+- Provider-specific configuration in UI (model list, keys, optional org IDs) and a unified retry/backoff strategy.
+- Clear error categories per provider (auth/quota/network/content) surfaced with guidance.
+- Always‑useful offline scaffold + “what’s missing” checklist when every provider fails.
 
 3) UX (wizard + preview)
 - Steps: Describe → Options → Preview → Generate.

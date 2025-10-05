@@ -15,7 +15,7 @@
 ## What We Are Building Next
 - MCP SDK integration (stdio/SSE) and richer templates (basic/tools/resources/prompts/advanced).
 - Wizard with file‑tree preview and validation before writing.
-- Retries/timeouts/rate limiting in OpenAIService; clearer errors.
+- Provider abstraction that supports OpenAI, Google Gemini, Claude, and OpenRouter with shared retries/timeouts and friendly errors.
 - Integration tests that compile and smoke‑run a generated TS server; minimal UI smoke tests.
 - Public README with screenshots and troubleshooting; internal docs moved to a private repo and synced when authorized.
 

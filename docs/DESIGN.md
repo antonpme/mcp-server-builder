@@ -8,10 +8,10 @@
 - Generation Engine
   - Templates (basic/tools/resources/prompts/advanced)
   - Response parsing (Zod); normalization + safety checks
-  - Post‑processing: format, lint, compile check (TS)
-- OpenAI Service
-  - Prompt building; retries with backoff; timeouts; rate limiting
-  - Error taxonomy (auth/quota/network/content)
+  - Post-processing: format, lint, compile check (TS)
+- AI Provider Layer
+  - Adapters for OpenAI, Google Gemini, Claude, OpenRouter
+  - Shared retry/backoff/timeouts + error taxonomy (auth/quota/network/content)
   - Offline fallback generator always available
 - MCP SDK integration
   - Create server with stdio/SSE; register at least one tool

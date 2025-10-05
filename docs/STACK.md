@@ -8,7 +8,7 @@
 - VS Code API (extension host, webview)
 - MCP SDK (`@modelcontextprotocol/sdk`) for server generation
 - Zod for schema validation of model responses
-- OpenAI SDK for generation requests
+- Provider SDKs / APIs: OpenAI, Google Gemini, Claude, OpenRouter (via REST adapters)
 
 ## UI
 - Webview HTML/CSS/vanilla TS for the wizard and preview
