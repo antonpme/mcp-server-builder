@@ -1,5 +1,6 @@
-﻿import * as path from 'path';
-import { downloadAndUnzipVSCode, resolveCliPathFromVSCodeExecutablePath, runTests } from '@vscode/test-electron';
+﻿import * as cp from 'child_process';
+import * as path from 'path';
+import { downloadAndUnzipVSCode, resolveCliPathFromVSCodeExecutablePath } from '@vscode/test-electron';
 
 async function main() {
   try {
@@ -9,15 +10,29 @@ async function main() {
     const vscodeExecutablePath = await downloadAndUnzipVSCode('stable');
     const cliPath = resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
-    await runTests({
-      vscodeExecutablePath: cliPath,
-      reuseMachineInstall: true,
-      extensionDevelopmentPath,
-      extensionTestsPath,
-      launchArgs: [],
+    const args = [
+      `--extensionDevelopmentPath=${extensionDevelopmentPath}`,
+      `--extensionTestsPath=${extensionTestsPath}`
+    ];
+
+    await new Promise<void>((resolve, reject) => {
+      const shell = process.platform === 'win32';
+      const child = cp.spawn(cliPath, args, { stdio: 'inherit', shell });
+
+      child.on('error', reject);
+      child.on('exit', code => {
+        if (code === 0) {
+          resolve();
+        } else {
+          reject(new Error(`VS Code exited with code ${code ?? 'null'}`));
+        }
+      });
     });
   } catch (err) {
     console.error('Failed to run tests');
+    if (err instanceof Error) {
+      console.error(err.message);
+    }
     process.exit(1);
   }
 }
